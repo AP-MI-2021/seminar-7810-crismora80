@@ -6,7 +6,8 @@ from Service.undoRedoService import UndoRedoService
 
 
 class LocatieService:
-    def __init__(self, locatieRepository: Repository, undoRedoService: UndoRedoService):
+    def __init__(self, locatieRepository: Repository,
+                 undoRedoService: UndoRedoService):
         self.__locatieRepository = locatieRepository
         self.__undoRedoService = undoRedoService
 
@@ -22,7 +23,8 @@ class LocatieService:
             scara,
             alteIndicatii)
         self.__locatieRepository.adauga(locatie)
-        self.__undoRedoService.addUndoOperation(AddOperation(self.__locatieRepository, locatie))
+        self.__undoRedoService.addUndoOperation(
+            AddOperation(self.__locatieRepository, locatie))
 
     def sterge(self, idLocatie):
         self.__locatieRepository.sterge(idLocatie)
@@ -44,7 +46,8 @@ class LocatieService:
             scara,
             alteIndicatii)
         self.__locatieRepository.modifica(locatie)
-        self.__undoRedoService.addUndoOperation(ModifyOperation(self.__locatieRepository, locatieVeche, locatie))
+        self.__undoRedoService.addUndoOperation(
+            ModifyOperation(self.__locatieRepository, locatieVeche, locatie))
 
     def ordoneazaLocatiiDupaIndicatii(self):
         return sorted(self.__locatieRepository.read(),

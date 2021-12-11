@@ -14,7 +14,8 @@ def main():
 
     masinaRepositoryJson = RepositoryJson("masini.json")
     masinaValidator = MasinaValidator()
-    masinaService = MasinaService(masinaRepositoryJson, masinaValidator, undoRedoService)
+    masinaService = MasinaService(masinaRepositoryJson, masinaValidator,
+                                  undoRedoService)
 
     locatieRepositoryJson = RepositoryJson("locatii.json")
     locatieService = LocatieService(locatieRepositoryJson, undoRedoService)
@@ -25,7 +26,8 @@ def main():
         masinaRepositoryJson,
         locatieRepositoryJson)
 
-    consola = Consola(masinaService, locatieService, comandaService, undoRedoService)
+    consola = Consola(masinaService, locatieService, comandaService,
+                      undoRedoService)
 
     consola.runMenu()
 

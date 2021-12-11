@@ -21,7 +21,8 @@ class MasinaService:
         masina = Masina(idMasina, indicativ, nivelConfort, plataCard, model)
         self.__masinaValidator.valideaza(masina)
         self.__masinaRepository.adauga(masina)
-        self.__undoRedoService.addUndoOperation(AddOperation(self.__masinaRepository, masina))
+        self.__undoRedoService.addUndoOperation(
+            AddOperation(self.__masinaRepository, masina))
 
     def sterge(self, idMasina):
         self.__masinaRepository.sterge(idMasina)

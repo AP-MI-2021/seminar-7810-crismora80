@@ -21,3 +21,4 @@ class UndoRedoService:
             lastRedoOperation = self.__redoOperations.pop()
             self.__undoOperations.append(lastRedoOperation)
             lastRedoOperation.doRedo()
+            
