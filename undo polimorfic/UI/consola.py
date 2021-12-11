@@ -1,16 +1,19 @@
 from Service.comandaService import ComandaService
 from Service.locatieService import LocatieService
 from Service.masinaService import MasinaService
+from Service.undoRedoService import UndoRedoService
 
 
 class Consola:
     def __init__(self,
                  masinaService: MasinaService,
                  locatieService: LocatieService,
-                 comandaService: ComandaService):
+                 comandaService: ComandaService,
+                 undoRedoService: UndoRedoService):
         self.__masinaService = masinaService
         self.__locatieService = locatieService
         self.__comandaService = comandaService
+        self.__undoRedoService = undoRedoService
 
     def runMenu(self):
         while True:
@@ -26,6 +29,8 @@ class Consola:
                   "suma a comenzilor")
             print("6d. Determinarea locatiilor care au cel putin o comanda "
                   "cu distanta mai mare decat o distanta data")
+            print("u. Undo")
+            print("r. Redo")
             print("x. Iesire")
             optiune = input("Dati optiunea: ")
 
@@ -47,6 +52,10 @@ class Consola:
                 self.uiLocatieCuCeaMaiLungaSumaAComenzilor()
             elif optiune == "6d":
                 self.uiLocatiiComenziMaiLungi()
+            elif optiune == "u":
+                self.__undoRedoService.undo()
+            elif optiune == "r":
+                self.__undoRedoService.redo()
             elif optiune == "x":
                 break
             else:
